@@ -5,9 +5,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/pokemon_wallpaper01"
         tools:context=".SplashSreenActivity"
-        android:orientation="vertical">
+        >
 
-
+    <include
+        layout="@layout/form_nikename"/>
 
 </LinearLayout>

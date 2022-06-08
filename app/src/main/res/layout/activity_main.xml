@@ -17,80 +17,84 @@
             android:padding="2dp"
     />
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view1"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        card_view:contentPadding="10dp"
+        card_view:cardBackgroundColor="@color/white_sujo"
+        card_view:cardCornerRadius="20dp"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-    >
-        <LinearLayout
+            android:orientation="vertical">
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/nameListOptions2"
-                android:layout_weight="1">
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-                    />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
+                android:layout_marginBottom="10dp"
+                android:text="Qual o nome do pokemon?"
+                android:gravity="center"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/nameListOptions"
-                android:layout_weight="1">
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-            <TextView
-                    style="@style/textViewItemOptionName"
-                    android:text="teste"
-            />
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-
-    <EditText
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Qual o nome deste Pokemon?"/>
+            android:id="@+id/linha1">
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/names"/>
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view2"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:contentPadding="10dp"
+        card_view:cardBackgroundColor="@color/white_sujo"
+        card_view:cardCornerRadius="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Qual a experiência desse pokemon?"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linha2"
+                >
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/experiences"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text=">>"/>
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="30dp"
+            android:text=">>>"
+            app:icon="@drawable/ic_pngwing_com"
+            app:iconGravity="textEnd"
+        />
 
 </LinearLayout>
