@@ -2,10 +2,12 @@ package com.example.trabalhoavaliativopdm2.pokemon;
 
 import com.example.trabalhoavaliativopdm2.connection.MyConnection;
 
+import kotlin.jvm.Throws;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
@@ -24,6 +26,7 @@ public class PokemonsData {
     public static PokemonsData getInstace(){
         if(instace == null){
             instace = new PokemonsData();
+            instace.setPokemons(new ArrayList<>());
         }
         return instace;
     }
@@ -33,7 +36,13 @@ public class PokemonsData {
         return URL+"limit="+(random.nextInt(60)+10) +"&offset="+random.nextInt(1000);
     }
 
-    private List<Pokemon> catchPokemonOnline(){
+    public List<Pokemon> catchPokemonOnline(){
+        if(!pokemons.isEmpty()){
+            boolean removed = pokemons.removeAll(pokemons);
+            if (!removed){
+                throw new RuntimeException("Não foi possível limpar a lista de pokemons");
+            }
+        }
         connection = MyConnection.getInstance();
         String data = connection.getStringResponseHTTPS(newRandomUrlPokemon());
         System.out.println("connectoin = "+ data);

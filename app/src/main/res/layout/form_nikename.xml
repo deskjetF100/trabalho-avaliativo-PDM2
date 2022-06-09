@@ -5,6 +5,7 @@
         android:id="@+id/form_nikename"
             android:layout_width="300dp"
             android:layout_height="200dp"
+        android:visibility="invisible"
             app:cardCornerRadius="20dp">
         <LinearLayout
                 android:layout_width="match_parent"
