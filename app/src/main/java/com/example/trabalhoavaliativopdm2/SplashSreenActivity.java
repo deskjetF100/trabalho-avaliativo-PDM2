@@ -25,7 +25,7 @@ public class SplashSreenActivity extends AppCompatActivity {
     private Executor executor;
     private Handler handler;
     private final int ID_MESSAGE_FORM_NIKENAME = 1;
-    PokemonsData pokemonsData;
+    private PokemonsData pokemonsData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +49,8 @@ public class SplashSreenActivity extends AppCompatActivity {
                             if(!userNikeName.isEmpty()){
                                 pokemonsData.setUserNikeName(userNikeName);
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }else{
+                                Toast.makeText(SplashSreenActivity.this, "Informe um nome de jogado", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

@@ -6,8 +6,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
+        android:background="@drawable/backgoundmain"
         tools:context=".MainActivity">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_sujo"
+            android:text="Wandé"
+            android:textSize="24dp"
+            android:fontFamily="monospace"
+            android:layout_margin="25dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:id="@+id/userNikname"/>
     <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -36,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="monospace"
                 android:text="Qual o nome do pokemon?"
                 android:gravity="center"/>
 
@@ -70,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="monospace"
                 android:text="Qual a experiência desse pokemon?"
                 android:gravity="center"/>
 
@@ -92,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="60dp"
             android:layout_marginTop="30dp"
+            android:id="@+id/nextButton"
             android:text=">>>"
             app:icon="@drawable/ic_pngwing_com"
             app:iconGravity="textEnd"
