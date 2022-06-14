@@ -30,6 +30,9 @@ public class Pokemon {
     public int getBase_experience() {
         return base_experience;
     }
+    public String getBase_experienceString() {
+        return String.valueOf(base_experience);
+    }
 
     public void setBase_experience(int base_experience) {
         this.base_experience = base_experience;

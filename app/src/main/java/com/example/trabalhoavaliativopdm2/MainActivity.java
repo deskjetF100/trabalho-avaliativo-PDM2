@@ -1,5 +1,6 @@
 package com.example.trabalhoavaliativopdm2;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,14 +29,16 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerNames;
     private Spinner spinnerExperiences;
     private ArrayAdapter<String> adapterSpinnerNames;
-    private ArrayAdapter<Integer> adapterSpinnerExperiences;
+    private ArrayAdapter<String> adapterSpinnerExperiences;
     private Button newxtButton;
     private List<Pokemon> pokemons;
     private List<Pokemon> pokemonGame;
+    private Pokemon pokemonRound;
     private PokemonsData pokemonsData;
-    private String responseName;
-    private int responseExperience;
+    private int points = 0;
     private int count = 0;
+    private String responseName = "";
+    private int responseExperience = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
         pokemons = pokemonsData.getPokemons();
         userNikename.setText(pokemonsData.getUserNikeName());
         getPokemonsGame();
-        nextRandom();
+        loadSpinner();
+        changePokemon();
         newxtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,32 +74,77 @@ public class MainActivity extends AppCompatActivity {
             pokemonGame.add(pokemons.get(randomNum));
             pokemons.remove(randomNum);
         }
-
+        //Para testes
         for (Pokemon pokemon : pokemonGame) {
             System.out.println(pokemon.toString());
         }
     }
 
+    private ArrayList<String> createListSpinner(List<Pokemon> pokemonList, Function<Pokemon, String> getValue){
+        ArrayList<String> newList = new ArrayList<>();
+        for (Pokemon pokemon : pokemonList) {
+            newList.add(getValue.apply(pokemon));
+        }
+        return newList;
+    }
     private void nextRandom(){
-        Pokemon pokemon = pokemonGame.get(count);
-        Picasso.get().load(pokemon.getFront_default()).into(imagePokemon);
-        ArrayList<String> listOptionsNames = new ArrayList<>();
-        listOptionsNames.add("-");
-        for (Pokemon p: pokemonGame) {
-            listOptionsNames.add(p.getName());
+        if(count > 5){
+            Toast.makeText(this, points+" acertos", Toast.LENGTH_SHORT).show();
+            return;
         }
-        adapterSpinnerNames = new ArrayAdapter<String>(getApplicationContext(),
-                android.R.layout.simple_list_item_1, listOptionsNames);
-        spinnerNames.setAdapter(adapterSpinnerNames);
-        ArrayList<Integer> listOptinoExperience = new ArrayList<>();
-        listOptinoExperience.add(0);
-        for (Pokemon p: pokemonGame) {
-            listOptinoExperience.add(p.getBase_experience());
-        }
-        adapterSpinnerExperiences = new ArrayAdapter<Integer>(getApplicationContext(),
-                android.R.layout.simple_list_item_1, listOptinoExperience);
-        spinnerExperiences.setAdapter(adapterSpinnerExperiences);
+        verifyScore();
+        changePokemon();
+    }
+
+    private void changePokemon() {
+        Random random = new Random();
+        pokemonRound = pokemonGame.get(random.nextInt(pokemonGame.size()));
+        Picasso.get().load(pokemonRound.getFront_default()).into(imagePokemon);
+        Log.i("Pokemon = ", pokemonRound.toString());
         count++;
     }
 
+    private void loadSpinner() {
+        ArrayList<String> listOptionsNames = createListSpinner(pokemonGame, Pokemon::getName);
+        adapterSpinnerNames = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, listOptionsNames);
+        spinnerNames.setAdapter(adapterSpinnerNames);
+        spinnerNames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(MainActivity.this, "você clicou em um NOME", Toast.LENGTH_SHORT).show();
+                responseName = (String) adapterView.getItemAtPosition(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //Faz nada
+            }
+        });
+        ArrayList<String> listOptinoExperience = createListSpinner(pokemonGame, Pokemon::getBase_experienceString);
+        adapterSpinnerExperiences = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, listOptinoExperience);
+        spinnerExperiences.setAdapter(adapterSpinnerExperiences);
+        spinnerExperiences.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(MainActivity.this, "você clicou em uma EXPERIENCIA", Toast.LENGTH_SHORT).show();
+                responseExperience = Integer.parseInt((String) adapterView.getItemAtPosition(i));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //Faz nada
+            }
+        });
+    }
+
+    private void verifyScore() {
+        if(pokemonRound.getName().equals(responseName) && pokemonRound.getBase_experience() == responseExperience){
+            points++;
+            Toast.makeText(this, "acertou" + points, Toast.LENGTH_SHORT).show();
+            Log.i("pokemonacert", "acertou pokemon"+count+" nome = "+responseName);
+        }
+        return;
+    }
 }
