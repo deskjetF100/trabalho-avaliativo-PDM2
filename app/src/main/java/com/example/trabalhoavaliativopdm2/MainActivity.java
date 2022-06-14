@@ -64,12 +64,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getPokemonsGame(){
-        Random random = new Random();
         pokemonGame = new ArrayList<>();
+        List<Pokemon> newLista = pokemons;
+        Collections.shuffle(newLista);
         for (int i = 0; i < 10; i++) {
-            int randomNum = random.nextInt(pokemons.size());
-            pokemonGame.add(pokemons.get(randomNum));
-            pokemons.remove(randomNum);
+            pokemonGame.add(newLista.get(i));
         }
         //Para testes
         for (Pokemon pokemon : pokemonGame) {
@@ -88,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private void nextRandom(){
         if(count > 5){
             Toast.makeText(this, points+" acertos", Toast.LENGTH_SHORT).show();
+            System.out.println(points+" acertos");
             return;
         }
         verifyScore();
@@ -95,8 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changePokemon() {
-        Random random = new Random();
-        pokemonRound = pokemonGame.get(random.nextInt(pokemonGame.size()));
+        pokemonRound = pokemonGame.get(count);
         Picasso.get().load(pokemonRound.getFront_default()).into(imagePokemon);
         Log.i("Pokemon = ", pokemonRound.toString());
         count++;
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerNames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, "você clicou em um NOME", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "você clicou em um NOME", Toast.LENGTH_SHORT).show();
                 responseName = (String) adapterView.getItemAtPosition(i);
             }
 
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerExperiences.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, "você clicou em uma EXPERIENCIA", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "você clicou em uma EXPERIENCIA", Toast.LENGTH_SHORT).show();
                 responseExperience = Integer.parseInt((String) adapterView.getItemAtPosition(i));
             }
 
@@ -140,8 +139,8 @@ public class MainActivity extends AppCompatActivity {
     private void verifyScore() {
         if(pokemonRound.getName().equals(responseName) && pokemonRound.getBase_experience() == responseExperience){
             points++;
-            Toast.makeText(this, "acertou" + points, Toast.LENGTH_SHORT).show();
-            Log.i("pokemonacert", "acertou pokemon"+count+" nome = "+responseName);
+            //Toast.makeText(this, "acertou" + points, Toast.LENGTH_SHORT).show();
+            //Log.i("pokemonacert", "acertou pokemon"+count+" nome = "+responseName);
         }
         return;
     }
