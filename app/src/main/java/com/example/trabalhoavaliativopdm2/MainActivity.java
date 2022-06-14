@@ -13,10 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -85,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         for (Pokemon pokemon : pokemonList) {
             newList.add(getValue.apply(pokemon));
         }
+        Collections.shuffle(newList);
         return newList;
     }
     private void nextRandom(){
