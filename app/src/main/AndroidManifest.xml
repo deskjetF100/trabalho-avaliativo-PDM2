@@ -12,6 +12,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.TrabalhoAvaliativoPDM2">
         <activity
+                android:name=".RankActivity"
+                android:exported="true"/>
+        <activity
                 android:name=".SplashSreenActivity"
                 android:exported="true">
             <intent-filter>

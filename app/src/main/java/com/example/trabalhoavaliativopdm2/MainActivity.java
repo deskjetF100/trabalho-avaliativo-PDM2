@@ -71,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
             pokemonGame.add(newLista.get(i));
         }
         //Para testes
-        for (Pokemon pokemon : pokemonGame) {
-            System.out.println(pokemon.toString());
-        }
+//        for (Pokemon pokemon : pokemonGame) {
+//            System.out.println(pokemon.toString());
+//        }
     }
 
     private ArrayList<String> createListSpinner(List<Pokemon> pokemonList, Function<Pokemon, String> getValue){

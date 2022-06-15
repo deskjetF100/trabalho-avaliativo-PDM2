@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "848013345564",
+    "firebase_url": "https://trabalhoavaliativopdm2-default-rtdb.firebaseio.com",
+    "project_id": "trabalhoavaliativopdm2",
+    "storage_bucket": "trabalhoavaliativopdm2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848013345564:android:b75a5bcf68ee31ede730d9",
+        "android_client_info": {
+          "package_name": "com.example.trabalhoavaliativopdm2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848013345564-5jq9bennemivtumeslbsafht0gu7agph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trabalhoavaliativopdm2",
+            "certificate_hash": "a31511039e36ade7a0c83860bff7e203183b5b11"
+          }
+        },
+        {
+          "client_id": "848013345564-i6sdpo0bbv6i9rck3omsh2k1p3rk498r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjmhd9xYcUq2RD3w85MOIGPUigEjmS-BU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848013345564-i6sdpo0bbv6i9rck3omsh2k1p3rk498r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
