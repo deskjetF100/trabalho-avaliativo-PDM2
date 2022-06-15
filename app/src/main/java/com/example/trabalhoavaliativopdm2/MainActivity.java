@@ -1,5 +1,6 @@
 package com.example.trabalhoavaliativopdm2;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
         if(count > 5){
             Toast.makeText(this, points+" acertos", Toast.LENGTH_SHORT).show();
             System.out.println(points+" acertos");
+            pokemonsData.setScore(points);
+            startActivity(new Intent(getApplicationContext(), RankActivity.class));
             return;
         }
         verifyScore();

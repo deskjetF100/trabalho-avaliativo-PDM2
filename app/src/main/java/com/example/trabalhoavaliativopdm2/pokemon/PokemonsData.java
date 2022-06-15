@@ -17,9 +17,12 @@ public class PokemonsData {
 
     private List<Pokemon> pokemons;
     private String userNikeName;
-    private MyConnection connection;
-    private final String URL = "https://pokeapi.co/api/v2/pokemon?";
 
+    private int score;
+
+    private MyConnection connection;
+
+    private final String URL = "https://pokeapi.co/api/v2/pokemon?";
     private PokemonsData() {
     }
 
@@ -79,5 +82,13 @@ public class PokemonsData {
 
     public void setPokemons(List<Pokemon> pokemons) {
         this.pokemons = pokemons;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
