@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="20dp"
+                android:background="@color/blue_pokemon">
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/nameUser"
+              android:textColor="@color/white"
+              android:textSize="14dp"
+              android:fontFamily="monospace"
+              android:textStyle="bold"
+              android:text="Nome: Jao Baleionsio"
+              android:layout_weight="1"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/scores"
+              android:textColor="@color/white"
+              android:textSize="14dp"
+              android:fontFamily="monospace"
+              android:textStyle="bold"
+              android:text="Score: 5"
+              android:layout_weight="1"
+    />
+
+</LinearLayout>
