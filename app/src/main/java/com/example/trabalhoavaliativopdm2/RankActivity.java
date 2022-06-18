@@ -12,8 +12,13 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RankActivity extends AppCompatActivity {
 
@@ -23,6 +28,10 @@ public class RankActivity extends AppCompatActivity {
 
     private ListView listRank;
     private RankAdapter adapter;
+    private RankScore rankScore;
+    private long idCount = 0;
+
+    private boolean saved = false;
 
 
     @Override
@@ -30,34 +39,36 @@ public class RankActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
 
-        List<RankScore> listaTeste = new ArrayList<>();
-        listaTeste.add(new RankScore("TEste", 5));
-        listaTeste.add(new RankScore("TEste", 5));
-        listaTeste.add(new RankScore("TEste", 5));
-        listaTeste.add(new RankScore("TEste", 5));
-
+        list_rankScore = new ArrayList<>();
         listRank = findViewById(R.id.listRank);
-        adapter = new RankAdapter(listaTeste, getApplicationContext());
-        listRank.setAdapter(adapter);
-
-        /*list_rankScore = new ArrayList<>();
         firedb = FirebaseDatabase.getInstance("https://trabalhoavaliativopdm2-default-rtdb.firebaseio.com/");
         rank_db = firedb.getReference("rank");
         PokemonsData pokemonsData = PokemonsData.getInstace();
-        RankScore newScore = new RankScore(pokemonsData.getUserNikeName(), pokemonsData.getScore());
-        setData(newScore);*/
+        rankScore = new RankScore(pokemonsData.getUserNikeName(), pokemonsData.getScore());
+        getData();
     }
 
     private void getData(){
         ValueEventListener changeListner = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                idCount = snapshot.getChildrenCount();
+                if(!saved){
+                    setData(rankScore);
+                    saved = true;
+                    return;
+                }
                 for (DataSnapshot ds: snapshot.getChildren()) {
                     RankScore rankScore = ds.getValue(RankScore.class);
                     list_rankScore.add(rankScore);
                     System.out.println(rankScore.toString());
                 }
-                //carregar spinner
+                List<RankScore> list_orderByScore = list_rankScore.stream()
+                        .sorted(Comparator.comparing(RankScore::getScore))
+                        .collect(Collectors.toList());
+                Collections.reverse(list_orderByScore);
+                adapter = new RankAdapter( list_orderByScore, getApplicationContext(), rankScore.getDate());
+                listRank.setAdapter(adapter);
             }
 
             @Override
@@ -69,6 +80,6 @@ public class RankActivity extends AppCompatActivity {
     }
 
     private void setData(RankScore rankScore){
-        rank_db.child(rankScore.getUserNikeName()).setValue(rankScore);
+        rank_db.child(String.valueOf(idCount+1)).setValue(rankScore);
     }
 }

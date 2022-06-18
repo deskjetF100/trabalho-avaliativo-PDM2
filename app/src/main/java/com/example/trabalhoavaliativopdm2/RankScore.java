@@ -1,8 +1,13 @@
 package com.example.trabalhoavaliativopdm2;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class RankScore {
     private String userNikeName;
     private int score;
+    private String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 
     public RankScore(String userNikeName, int score) {
         this.userNikeName = userNikeName;
@@ -26,6 +31,15 @@ public class RankScore {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public RankScore setDate(String date) {
+        this.date = date;
+        return this;
     }
 
     @Override

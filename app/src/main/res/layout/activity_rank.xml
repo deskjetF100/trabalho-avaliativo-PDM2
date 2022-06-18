@@ -8,10 +8,39 @@
         android:orientation="vertical"
         tools:context=".RankActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/confetti"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
     <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="400dp"
             android:padding="10dp"
             android:id="@+id/listRank"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="start"
+                app:lottie_rawRes="@raw/confetti"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
+        <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center"
+                app:lottie_rawRes="@raw/confetti"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
+    </LinearLayout>
 
 </LinearLayout>
