@@ -10,7 +10,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.example.trabalhoavaliativopdm2.R;
 import com.example.trabalhoavaliativopdm2.SplashSreenActivity;
-import com.example.trabalhoavaliativopdm2.pokemon.PokemonsData;
 
 public class NotifyTryAgain extends MyNotification {
 

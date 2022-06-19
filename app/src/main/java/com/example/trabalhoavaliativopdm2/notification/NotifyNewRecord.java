@@ -1,11 +1,9 @@
 package com.example.trabalhoavaliativopdm2.notification;
 
 import android.app.Notification;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -33,6 +31,5 @@ public class NotifyNewRecord extends MyNotification {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText("Parabéns "+userNikeName+", você está entre os melhores!")).build();
         NotificationManagerCompat nm = NotificationManagerCompat.from(context);
         nm.notify(NOTIFICACAO_ID,builder);
-        Log.i("NotifyNewRecord", "Terminou de executar");
     }
 }

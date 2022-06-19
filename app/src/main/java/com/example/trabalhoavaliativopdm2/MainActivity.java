@@ -66,10 +66,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             pokemonGame.add(newLista.get(i));
         }
-        //Para testes
-//        for (Pokemon pokemon : pokemonGame) {
-//            System.out.println(pokemon.toString());
-//        }
     }
 
     private ArrayList<String> createListSpinner(List<Pokemon> pokemonList, Function<Pokemon, String> getValue){
@@ -107,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerNames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(MainActivity.this, "você clicou em um NOME", Toast.LENGTH_SHORT).show();
                 responseName = (String) adapterView.getItemAtPosition(i);
             }
 
@@ -123,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerExperiences.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(MainActivity.this, "você clicou em uma EXPERIENCIA", Toast.LENGTH_SHORT).show();
                 responseExperience = Integer.parseInt((String) adapterView.getItemAtPosition(i));
             }
 
@@ -137,8 +131,6 @@ public class MainActivity extends AppCompatActivity {
     private void verifyScore() {
         if(pokemonRound.getName().equals(responseName) && pokemonRound.getBase_experience() == responseExperience){
             points++;
-            //Toast.makeText(this, "acertou" + points, Toast.LENGTH_SHORT).show();
-            //Log.i("pokemonacert", "acertou pokemon"+count+" nome = "+responseName);
         }
         return;
     }

@@ -73,12 +73,8 @@ public class RankActivity extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren()) {
                     RankScore rankScore = ds.getValue(RankScore.class);
                     list_rankScore.add(rankScore);
-                    System.out.println(rankScore.toString());
                 }
-//                List<RankScore> list_orderByScore = list_rankScore.stream()
-//                        .sorted(Comparator.comparing(RankScore::getScore))
-//                        .collect(Collectors.toList());
-//                Collections.reverse(list_orderByScore);
+
                 Collections.sort(list_rankScore, Comparator.comparing(RankScore::getScore));
                 Collections.reverse(list_rankScore);
                 verifyNewRecord();

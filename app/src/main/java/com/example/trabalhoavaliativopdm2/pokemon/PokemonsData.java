@@ -48,11 +48,11 @@ public class PokemonsData {
         }
         connection = MyConnection.getInstance();
         String data = connection.getStringResponseHTTPS(newRandomUrlPokemon());
-        System.out.println("connectoin = "+ data);
+//        System.out.println("connectoin = "+ data);
         try {
             JSONObject jsonObject = new JSONObject(data);
             JSONArray jsonArray = jsonObject.getJSONArray("results");
-            System.out.println("JSONARRAY = "+ jsonArray.length());// TESTE
+//            System.out.println("JSONARRAY = "+ jsonArray.length());
             for (int i = 0; i < jsonArray.length(); i++) {
                 String url = jsonArray.getJSONObject(i).getString("url");
                 JSONObject jsonPokemon = new JSONObject(connection.getStringResponseHTTPS(url));
