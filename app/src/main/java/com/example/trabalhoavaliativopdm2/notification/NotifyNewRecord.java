@@ -22,11 +22,6 @@ public class NotifyNewRecord extends MyNotification {
 
     @Override
     void notifyNow() {
-        //Intent intent = new Intent(context, Activity2.class);
-
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        PendingIntent pi = PendingIntent.getActivity(context, 0, null, 0);
-
         String userNikeName = PokemonsData.getInstace().getUserNikeName();
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_pokeboll);
 

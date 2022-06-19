@@ -45,13 +45,13 @@ public class RankActivity extends AppCompatActivity {
 
         list_rankScore = new ArrayList<>();
         listRank = findViewById(R.id.listRank);
-        playAgain = findViewById(R.id.playButton);
-//        playAgain.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), SplashSreenActivity.class));
-//            }
-//        });
+        playAgain = findViewById(R.id.playAgain);
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SplashSreenActivity.class));
+            }
+        });
 
         firedb = FirebaseDatabase.getInstance("https://trabalhoavaliativopdm2-default-rtdb.firebaseio.com/");
         rank_db = firedb.getReference("rank");
@@ -101,16 +101,19 @@ public class RankActivity extends AppCompatActivity {
     private void verifyNewRecord(){
         System.out.println("item postição 0 = "+list_rankScore.get(0).toString());
         Log.i("item postição 0 = ", list_rankScore.get(0).toString());
-      //  if(rankScore.getScore() >= list_rankScore.get(0).getScore()){
-            createNotify();
-      //  }
+        if(rankScore.getScore() >= list_rankScore.get(0).getScore()){
+            createNotify(1);
+        }else if(rankScore.getScore() < 3){
+            createNotify(2);
+        }
     }
 
-    private void createNotify(){
+    private void createNotify(int option){
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent i = new Intent(getApplicationContext() , AlarmReceiver.class);
 
-        pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,i,0);
+        i.putExtra("typeNotification", option);
+        pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,i,PendingIntent.FLAG_UPDATE_CURRENT);
         Calendar calendar = Calendar.getInstance();
 
         alarmManager.set(AlarmManager.RTC_WAKEUP,

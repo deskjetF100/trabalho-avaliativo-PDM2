@@ -8,7 +8,16 @@ import android.util.Log;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        MyNotification notify = new NotifyNewRecord(context.getApplicationContext());
+        int option = intent.getIntExtra("typeNotification", 2);
+        MyNotification notify = null;
+        switch(option){
+            case 1:
+                notify = new NotifyNewRecord(context.getApplicationContext());
+                break;
+            case 2:
+                notify = new NotifyTryAgain(context.getApplicationContext());
+                break;
+        }
         notify.createChanel();
         notify.notifyNow();
         Log.i("AlarmReciver", "Terminou de executar");

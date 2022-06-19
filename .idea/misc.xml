@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2890625" />
         <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/drawable/ic_pokeboll.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/layout/activity_rank.xml" value="0.25" />
         <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/layout/activity_splash_sreen.xml" value="0.33" />
+        <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/layout/form_nikename.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/layout/layout_rank.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/wande/Documents/AndroidProjects/Atividade_PDM2/TrabalhoAvaliativoPDM2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14166666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
