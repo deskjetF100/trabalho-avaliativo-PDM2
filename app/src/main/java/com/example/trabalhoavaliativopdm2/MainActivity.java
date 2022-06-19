@@ -77,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
         verifyScore();
         changePokemon();
         if(count > 5){
-            Toast.makeText(this, points+" acertos", Toast.LENGTH_SHORT).show();
-            System.out.println(points+" acertos");
             verifyScore();
             pokemonsData.setScore(points);
             startActivity(new Intent(getApplicationContext(), RankActivity.class));
