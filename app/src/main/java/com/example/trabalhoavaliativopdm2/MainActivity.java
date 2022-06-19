@@ -11,8 +11,6 @@ import com.example.trabalhoavaliativopdm2.pokemon.PokemonsData;
 import com.squareup.picasso.Picasso;
 
 import java.util.*;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 import java.util.function.Function;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerExperiences = findViewById(R.id.experiences);
         newxtButton = findViewById(R.id.nextButton);
         pokemons = new ArrayList<>();
-        Executor executor = Executors.newSingleThreadExecutor();
         pokemonsData = PokemonsData.getInstace();
         pokemons = pokemonsData.getPokemons();
         userNikename.setText(pokemonsData.getUserNikeName());
@@ -77,15 +74,16 @@ public class MainActivity extends AppCompatActivity {
         return newList;
     }
     private void nextRandom(){
+        verifyScore();
+        changePokemon();
         if(count > 5){
             Toast.makeText(this, points+" acertos", Toast.LENGTH_SHORT).show();
             System.out.println(points+" acertos");
+            verifyScore();
             pokemonsData.setScore(points);
             startActivity(new Intent(getApplicationContext(), RankActivity.class));
             return;
         }
-        verifyScore();
-        changePokemon();
     }
 
     private void changePokemon() {
