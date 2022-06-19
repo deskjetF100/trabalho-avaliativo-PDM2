@@ -13,7 +13,6 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import com.example.trabalhoavaliativopdm2.pokemon.PokemonsData;
 
-import java.lang.reflect.Executable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 

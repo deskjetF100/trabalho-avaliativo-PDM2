@@ -6,17 +6,12 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.trabalhoavaliativopdm2.connection.MyConnection;
 import com.example.trabalhoavaliativopdm2.pokemon.Pokemon;
 import com.example.trabalhoavaliativopdm2.pokemon.PokemonsData;
 import com.squareup.picasso.Picasso;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.*;
 import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
 
